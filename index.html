@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>cumpleaños</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<style>
+  body {
+    background-image: url('imgs/bananas.png');
+  }
+</style>
+
+<body class="container center">
+  <h1> AYUDAA!</h1>
+  <div id="typewriter"></div>
+  <br>
+  <div class="row">
+    <form class="col push-m3 s12 m6 card-panel black">
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="name" type="password" class="validate">
+          <!-- pista:Cómo me llamo? -->
+          <label for="name">Nombre de usuario</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="pass" type="password" class="validate">
+          <!-- Pista: me gusta la parte de abajo de los teclados de colores... -->
+          <label for="pass">Contraseña</label>
+        </div>
+      </div>
+      <button id="send" class="btn waves-effect waves-light" type="button" name="action">Entrar
+        <i class="material-icons right">send</i>
+      </button>
+      <br><br>
+
+    </form>
+  </div>
+  <div>
+    <p>Este es mi humilde regalo, ya que no he podido estar allí pero quería hacer algo gracioso y original, espero que te guste </p>
+    <p>Pista: todo em minúsculas y junto</p>
+    <p>David</p>
+  </div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script src="https://unpkg.com/typewriter-effect/dist/core.js"></script>
+<script>
+  //script for the form:
+  const u_name = document.getElementById('name');
+  const u_pass = document.getElementById('pass');
+  const btn = document.getElementById('send');
+
+  btn.addEventListener('click', check);
+
+  function check() {
+    let name = u_name.value;
+    let pass = u_pass.value;
+    console.log(name, pass)
+    let rev_name = name.split("").reverse().join("")
+    let rev_pass = pass.split("").reverse().join("");
+    let rev_code_name = [110, 101, 105, 117, 103, 108, 97, 111, 109, 97, 108, 108, 101, 109];
+    let rev_code_pass = [49, 99, 102, 110, 101, 111, 103, 97, 99, 101, 109];
+    let b_n = false;
+    let b_p = false;
+    for (i in rev_name) {
+      if (rev_name.charCodeAt(i) == rev_code_name[i]) {
+        b_n = true;
+      } else {
+        b_n = false;
+        break;
+      }
+    }
+    for (i in rev_pass) {
+      if (rev_pass.charCodeAt(i) == rev_code_pass[i]) {
+        b_p = true;
+      } else {
+        b_p = false;
+        break;
+      }
+    }
+    if (b_n) window.alert('nombre correcto')
+    else window.alert('nombre incorrecto')
+    if (b_p) window.alert('passowrd correcto')
+    else window.alert('password incorrecto')
+    if (b_n && b_p) {
+      window.location = 'cake.html?windows=vomito';
+    }
+
+  }
+
+  //typewriter effect
+  const instance = new Typewriter('#typewriter', {
+    loop: false
+  })
+  instance.typeString('Hola, necesito que ALGUIEN me ayude a aprobar FC, para ello necesito acceder a mis apuntes pero se me ha olvidado el nombre de usuario y la contraseña, me ayudas?')
+    .start();
+</script>
+
+</html>
